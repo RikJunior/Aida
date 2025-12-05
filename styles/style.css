@@ -1,0 +1,670 @@
+/* --- 1. Общие стили и Контейнер --- */
+:root {
+    /* Глобальные переменные */
+    --kt-blue: #0095DA;
+    --kt-dark-blue: #0077b0;
+    --bg-gray: #f4f6f8;
+    --text-main: #333333;
+    --text-secondary: #777777;
+    --header-top-bg: #1f2735; /* Темный фон для верхней панели */
+    --header-down-bg: #ffffff; /* Светлый фон для нижней панели */
+}
+
+body {
+    background-color: var(--bg-gray);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: sans-serif; /* Добавлен базовый шрифт */
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px; /* Максимальная ширина */
+    margin: 0 auto;
+    padding: 0 20px; /* Добавлены горизонтальные отступы для адаптивности */
+    box-sizing: border-box;
+}
+
+/* --- 2. Стили для Хедера --- */
+
+.robot-img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Верхняя панель */
+.header-toppanel {
+    background-color: var(--header-top-bg); /* Темный фон */
+    padding: 10px 0; /* Уменьшаем вертикальные отступы */
+}
+
+.header-toppanel .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Разрешаем перенос на мобильных */
+}
+
+.header-toppanel__nav,
+.header-toppanel__info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.header-toppanel__link,
+.header-toppanel__info-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin-right: 15px;
+    transition: color 0.2s;
+}
+
+.header-toppanel__link:hover,
+.header-toppanel__info-link:hover {
+    color: var(--kt-blue);
+}
+
+.header-toppanel__link:last-child,
+.header-toppanel__info-link:last-child {
+    margin-right: 0;
+}
+
+/* Нижняя панель */
+.header-downpanel {
+    background-color: var(--header-down-bg); /* Светлый фон */
+    padding: 15px 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05); /* Легкая тень */
+}
+
+.header-downpanel .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.header-downpanel__nav {
+    display: flex;
+    gap: 20px;
+    flex-grow: 1; /* Займет максимум места */
+}
+
+.header-downpanel__link {
+    text-decoration: none;
+    color: var(--text-main); /* Основной цвет текста */
+    font-weight: 500;
+    white-space: nowrap;
+    transition: color 0.2s;
+}
+
+.header-downpanel__link:hover {
+    color: var(--kt-blue);
+}
+
+/* Кнопки */
+.header-downpanel__buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-downpanel__btn {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 8px 15px;
+    background-color: var(--kt-blue);
+    color: white;
+    border-radius: 20px; /* Более скругленные углы */
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.header-downpanel__btn:hover {
+    background-color: var(--kt-dark-blue);
+}
+
+/* Стили для поиска (SVG-иконка, если бы она была) */
+.header-downpanel__search {
+    padding: 0 10px;
+    cursor: pointer;
+}
+.header-downpanel__search-img {
+    /* Если иконка SVG, стилизуйте её или используйте реальный SVG */
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* Стилизация Лого (SVG) */
+.logo svg .path3 {
+    fill: var(--text-main); /* Используем основной цвет текста для белых элементов лого, если фон светлый */
+}
+
+.logo{
+    cursor: pointer;
+}
+
+/* --- 3. Адаптивность (Media Queries) --- */
+
+/* Планшеты (до 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .header-downpanel__nav {
+        gap: 15px;
+    }
+
+    .header-downpanel__link {
+        font-size: 0.95rem;
+    }
+
+    /* Верхняя панель: навигация занимает 100% ширины */
+    .header-toppanel__nav {
+        margin-bottom: 5px;
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .header-toppanel__info {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* Мобильные устройства (до 768px) */
+@media (max-width: 768px) {
+    .header-toppanel {
+        display: none; /* Убираем верхнюю панель на мобильных, чтобы не перегружать */
+    }
+
+    .header-downpanel .container {
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    .logo {
+        flex-basis: 100%; /* Логотип занимает всю ширину */
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .logo svg {
+        width: 150px;
+        height: 33px;
+    }
+
+    .header-downpanel__nav {
+        display: none; /* Скрываем основное меню на мобильных, оставив место для "бургера" */
+    }
+
+    .header-downpanel__search {
+        order: 3; /* Сдвигаем поиск/кнопки в конец */
+    }
+
+    .header-downpanel__buttons {
+        order: 4;
+    }
+
+    .header-downpanel__btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+
+/* --- 4. Стили для MAIN (повтор для полноты) --- */
+
+.main-content {
+    flex: 1; 
+    padding: 20px 0 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.aida-interface {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aida-greeting-box {
+    text-align: center;
+    margin-bottom: 30px; 
+    padding: 0 20px;
+    max-width: 900px;
+}
+
+.aida-greeting-title {
+    font-size: 2.8rem; 
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: var(--text-main);
+}
+
+.aida-greeting-title span {
+    color: var(--kt-blue);
+}
+
+.aida-greeting-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.chat-window {
+    width: 100%; 
+    max-width: 900px; 
+    height: 80vh; 
+    min-height: 600px;
+    background: #fff;
+    border-radius: 12px; 
+    box-shadow: 0 5px 20px rgba(0, 149, 218, 0.1); 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.chat-header {
+    background: #f7f9fb; 
+    padding: 15px 25px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 25px; 
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #fff;
+}
+
+.message {
+    max-width: 70%; 
+    display: flex;
+    flex-direction: column;
+}
+
+.message--bot .message__content {
+    background-color: var(--bg-gray); 
+    color: var(--text-main);
+    border-bottom-left-radius: 4px;
+}
+
+.message--user {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.message--user .message__content {
+    background-color: var(--kt-blue);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+
+.chat-input-area {
+    padding: 20px 25px; 
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.chat-input {
+    flex-grow: 1;
+    max-width: 800px; 
+    border: 1px solid #ddd;
+    background: #fcfcfc;
+    border-radius: 25px;
+    padding: 14px 20px;
+}
+
+.chat-send-btn {
+    min-width: 45px;
+    height: 45px;
+    background-color: var(--kt-blue);
+    border-radius: 50%;
+}
+
+/* --- MAIN: Стили для области с Aida (Full Width) --- */
+.main-content {
+    flex: 1; 
+    padding: 20px 0 60px; /* Увеличиваем нижний отступ */
+    display: flex;
+    justify-content: center;
+}
+
+/* Общий контейнер чата и приветствия */
+.aida-interface {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column; /* Элементы идут сверху вниз */
+    align-items: center; /* Центрируем приветствие и окно чата */
+}
+
+/* Стили для Приветствия */
+.aida-greeting-box {
+    text-align: center;
+    margin-bottom: 30px; 
+    padding: 0 20px;
+    max-width: 900px; /* Совпадает с max-width чата */
+}
+
+.aida-greeting-title {
+    font-size: 2.8rem; /* Чуть больше */
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: var(--text-main);
+}
+
+.aida-greeting-title span {
+    color: var(--kt-blue);
+}
+
+.aida-greeting-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+
+/* Окно чата */
+.chat-window {
+    width: 100%; 
+    max-width: 900px; 
+    height: 80vh; 
+    min-height: 600px;
+    background: #fff;
+    border-radius: 12px; 
+    box-shadow: 0 5px 20px rgba(0, 149, 218, 0.1); 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Шапка чата */
+.chat-header {
+    background: #f7f9fb; 
+    padding: 15px 25px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: flex-start; /* Выравнивание влево, так как кнопка удалена */
+    align-items: center;
+}
+
+.chat-header__status {
+    font-weight: 600;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+}
+
+
+/* Область сообщений */
+.chat-messages {
+    flex: 1;
+    padding: 25px; 
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #fff;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+    border-radius: 3px;
+}
+
+.message {
+    max-width: 70%; 
+    display: flex;
+    flex-direction: column;
+}
+
+.message__content {
+    padding: 12px 16px;
+    border-radius: 18px; 
+    font-size: 1rem;
+    line-height: 1.5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.message__time {
+    font-size: 10px;
+    color: #999;
+    margin-top: 4px;
+}
+
+/* Стили для бота */
+.message--bot {
+    align-self: flex-start;
+}
+
+.message--bot .message__content {
+    background-color: var(--bg-gray); 
+    color: var(--text-main);
+    border-bottom-left-radius: 4px;
+}
+
+/* Стили для пользователя */
+.message--user {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.message--user .message__content {
+    background-color: var(--kt-blue);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+/* Область ввода */
+.chat-input-area {
+    padding: 20px 25px; 
+    background: #fff;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.chat-input {
+    flex-grow: 1;
+    max-width: 800px; 
+    border: 1px solid #ddd;
+    background: #fcfcfc;
+    border-radius: 25px;
+    padding: 14px 20px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.chat-input:focus {
+    background: #fff;
+    border-color: var(--kt-blue);
+    box-shadow: 0 0 0 3px rgba(0, 149, 218, 0.1);
+}
+
+.chat-send-btn {
+    min-width: 45px;
+    height: 45px;
+    background-color: var(--kt-blue);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.chat-send-btn:hover {
+    background-color: var(--kt-dark-blue);
+}
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 0;
+    }
+    
+    .aida-greeting-box {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .aida-greeting-title {
+        font-size: 2rem;
+    }
+
+    .chat-window {
+        height: 100vh; 
+        border-radius: 0;
+        max-width: 100%;
+        min-height: initial; 
+    }
+}
+
+/* --- FOOTER Стили --- */
+.footer {
+    background-color: #2c3e50; /* Темный цвет для подвала */
+    color: #ecf0f1;
+    padding: 40px 0 20px;
+    margin-top: auto;
+}
+
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-col h4 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--kt-blue);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--kt-blue);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-icon {
+    color: #bdc3c7;
+    text-decoration: none;
+}
+.social-icon:hover {
+    color: #fff;
+}
+
+.footer-col--copyright {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .aida-interface {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .aida-intro {
+        text-align: center;
+        padding: 0 20px;
+    }
+    
+    .aida-features {
+        align-items: center; /* Центрируем фичи на мобилке */
+        margin-bottom: 30px;
+    }
+
+    .chat-window {
+        height: 500px;
+        max-width: 100%;
+        border-radius: 0; /* На мобилке можно убрать скругление */
+    }
+    
+    .footer-row {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-col--copyright {
+        text-align: center;
+    }
+}
