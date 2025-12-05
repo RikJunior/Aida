@@ -1,0 +1,13 @@
+{
+  "name": "aida-faq-server",
+  "version": "1.0.0",
+  "description": "FAQ search server using TF-IDF",
+  "main": "scripts/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/main.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
