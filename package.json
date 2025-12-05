@@ -1,13 +1,18 @@
 {
-  "name": "aida-faq-server",
+  "name": "kazakhtelecom-aida",
   "version": "1.0.0",
-  "description": "FAQ search server using TF-IDF",
-  "main": "scripts/main.js",
+  "description": "Виртуальный помощник Aida для «Қазақтелеком»",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node scripts/main.js"
+    "start": "node server.js",
+    "dev": "node --watch server.js"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
