@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./styles/style.css">
 	<link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
-	<title>«Қазақтелеком» АҚ - Aida</title>
+	<title>Aida Admin Panel</title>
 </head>
 
 <body>
@@ -232,71 +232,101 @@
 		</div>
 	</header>
 
-	<main class="main-content">
- 	 <div class="container">
-
-    <section id="user-view" class="aida-interface full-width-chat">
-      <div class="aida-greeting-box">
-         <h1 class="aida-greeting-title">Привет! Я <span>Aida</span>.</h1>
-         <p class="aida-greeting-subtitle">Виртуальный помощник «Қазақтелеком». Спрашивайте о чём угодно!</p>
-      </div>
-
-      <div class="chat-window">
-         <div class="chat-header">
-            <div class="chat-header__status">
-               <span class="status-dot"></span>
-               Aida
-               <img class="robot-img" src="./img/robot-svgrepo-com.svg" alt="bot" style="width: 24px; height: 24px;">
-            </div>
-         </div>
-
-         <div class="chat-messages" id="chatMessages">
-            <div class="message message--bot">
-               <div class="message__content">
-                  Здравствуйте! Чем я могу вам помочь сегодня? Я готова ответить на все вопросы по услугам «Қазақтелеком» в полном объеме.
-               </div>
-               <span class="message__time">14:00</span>
-            </div>
-
-            <div class="message message--user">
-               <div class="message__content">
-                  Как подключить тариф "Black"?
-               </div>
-               <span class="message__time">14:01</span>
-            </div>
+<main class="main-content admin-mode">
+        <div class="container">
             
-             <div class="message message--bot">
-               <div class="message__content">
-                  Для подключения тарифа "Black" вы можете воспользоваться личным кабинетом или я могу оформить заявку прямо сейчас. Что выберете?
-               </div>
-               <span class="message__time">14:01</span>
-            </div>
-         </div>
+            <section id="admin-view" class="admin-interface">
+                <aside class="admin-sidebar">
+                    <div class="sidebar-header">
+                      <h3>Aida <span>Admin</span></h3>
+                    </div>
+                    <nav class="sidebar-menu">
+                      <a href="#" class="menu-item active">Дашборд</a>
+                      <a href="#" class="menu-item">Заявки (Live) <span class="badge">3</span></a>
+                      <a href="#" class="menu-item">База знаний</a>
+                      <a href="#" class="menu-item">Настройки AI</a>
+                      <a href="index.html" class="menu-item logout">← Вернуться на Главную</a>
+                    </nav>
+                </aside>
 
-         <div class="chat-input-area">
-            <input type="text" class="chat-input" placeholder="Введите ваш вопрос..." aria-label="Сообщение">
-            <button class="chat-send-btn">
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-               </svg>
-            </button>
-         </div>
-      </div>
-    </section>
+                <div class="admin-content">
+                   <header class="admin-header">
+                     <h2>Обзор системы</h2>
+                     <div class="admin-profile">
+                        <span>Администратор</span>
+                        <div class="avatar">A</div>
+                     </div>
+                     </header>
 
-	 <div class="container">
-		<section id="user-view" class="aida-interface full-width-chat"></section>
+                     <div class="stats-grid">
+                     <div class="stat-card">
+                        <div class="stat-title">Обработано ИИ</div>
+                        <div class="stat-value">845</div>
+                        <div class="stat-change positive">+12% за неделю</div>
+                     </div>
+                     <div class="stat-card">
+                        <div class="stat-title">Точность (Accuracy)</div>
+                        <div class="stat-value">92.4%</div>
+                        <div class="stat-change positive">Цель выполнена</div>
+                     </div>
+                     <div class="stat-card">
+                        <div class="stat-title">Сэкономлено времени</div>
+                        <div class="stat-value">145ч</div>
+                        <div class="stat-change">Работа 1-й линии</div>
+                     </div>
+                     <div class="stat-card warning">
+                        <div class="stat-title">Требуют внимания</div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-change negative">Ошибки маршрутизации</div>
+                     </div>
+                     </div>
 
-		<div class="admin-link-footer">
-			<a href="admin.html" class="btn-admin-link">
-				Перейти в Admin Panel
-			</a>
-		</div>
-	</div>
-  </div>
-  
-</main>
+                     <div class="charts-grid">
+                        <div class="chart-card">
+                           <h3>Автоматическое закрытие заявок</h3>
+                           <div class="donut-chart-container">
+                                 <div class="donut-chart" style="--percentage: 75;">
+                                    <span class="chart-value">75%</span>
+                                    <span class="chart-label">Автоматика</span>
+                                 </div>
+                           </div>
+                           <p class="chart-info">Цель: 50%. Текущая производительность ИИ: 75%.</p>
+                        </div>
+
+                        <div class="chart-card">
+                           <h3>Ежедневная активность (Тикеты)</h3>
+                           <div class="bar-chart-wrapper">
+                                 <div class="chart-y-axis">
+                                    <span>100</span>
+                                    <span>50</span>
+                                    <span>0</span>
+                                 </div>
+                                 <div class="bar-chart">
+                                    <div class="chart-bar" style="--height: 70%;" title="Пн: 70"></div>
+                                    <div class="chart-bar" style="--height: 50%;" title="Вт: 50"></div>
+                                    <div class="chart-bar" style="--height: 90%;" title="Ср: 90"></div>
+                                    <div class="chart-bar" style="--height: 60%;" title="Чт: 60"></div>
+                                    <div class="chart-bar active" style="--height: 85%;" title="Пт: 85"></div>
+                                    <div class="chart-bar" style="--height: 40%;" title="Сб: 40"></div>
+                                    <div class="chart-bar" style="--height: 30%;" title="Вс: 30"></div>
+                                 </div>
+                                 <div class="chart-x-axis">
+                                    <span>Пн</span>
+                                    <span>Вт</span>
+                                    <span>Ср</span>
+                                    <span>Чт</span>
+                                    <span>Пт</span>
+                                    <span>Сб</span>
+                                    <span>Вс</span>
+                                 </div>
+                           </div>
+                        </div>
+                     </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
 
    <footer class="footer">
       <div class="container">
@@ -332,6 +362,34 @@
          </div>
       </div>
    </footer>
+
+
+
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const toggleBtn = document.getElementById('toggleViewBtn');
+			const userView = document.getElementById('user-view');
+			const adminView = document.getElementById('admin-view');
+			const btnText = toggleBtn.querySelector('span');
+
+			toggleBtn.addEventListener('click', () => {
+				// Переключаем видимость
+				userView.classList.toggle('hidden');
+				adminView.classList.toggle('hidden');
+
+				// Меняем текст кнопки для понятности
+				if (adminView.classList.contains('hidden')) {
+						btnText.textContent = "Switch to Admin";
+						// Возвращаем фокус на контейнер
+						document.querySelector('.container').style.maxWidth = ""; 
+				} else {
+						btnText.textContent = "Back to Chat";
+						// Делаем контейнер шире для админки, чтобы было красиво
+						document.querySelector('.container').style.maxWidth = "100%"; 
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>
